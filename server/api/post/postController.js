@@ -16,7 +16,12 @@ exports.params = function(req, res, next, id) {
 };
 
 exports.get = function(req, res, next) {
-  // need to populate here
+  Posts.find({})
+    .then((posts)=>{
+      res.json(posts);
+    }, (err) => {
+      next(err);
+    });
 };
 
 exports.getOne = function(req, res, next) {
